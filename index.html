@@ -29,7 +29,7 @@
       ws.onmessage = function (msg) {
         var json_obj = JSON.parse(msg.data);
         var beautified_json = js_beautify(msg.data);
-        $('.msg-list ul').append('<li><p>['+new Date().toString().split('GMT')[0]+'][FROM:'+json_obj.From+'][TO:'+json_obj.To+']: <strong>'+json_obj.Body+'</strong></p><pre><code class="json">'+beautified_json+'</pre></code></li>');
+        $('.msg-list ul').append('<li><p>['+new Date().toString().split(' GMT')[0]+']<br/>[FROM:'+json_obj.From+']<br/>[TO:'+json_obj.To+']<br/><strong>'+json_obj.Body+'</strong></p><pre><code class="json">'+beautified_json+'</pre></code></li>');
         $('pre code').each(function(i, block) {
           hljs.highlightBlock(block);
         });
