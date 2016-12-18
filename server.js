@@ -3,6 +3,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const fs = require('fs');
+const WebSocket = require('ws');
 
 var httpServer = express();
 var httpPort = process.env.PORT || 8080;
