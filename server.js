@@ -33,7 +33,7 @@ httpServer.post('/service', function(req, res){
     res.end('<Response><Message>SMS received by Server</Message></Response>');
 });
 
-httpServer.get('sendOwnerEmail',function(req, res){
+httpServer.get('/sendOwnerEmail',function(req, res){
   postmark.send({
     "From": "meet-owner-sms@mao.com",
     "To": "larry.luangrath@clynch.com",
