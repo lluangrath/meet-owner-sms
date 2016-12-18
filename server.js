@@ -10,7 +10,7 @@ var httpPort = process.env.PORT || 8080;
 httpServer.use(bodyParser.json());
 httpServer.use(bodyParser.urlencoded({ extended: true }));
 
-app.get('/', function(req, res){
+httpServer.get('/', function(req, res){
     console.log('GET /')
     var html = fs.readFileSync('index.html');
     res.writeHead(200, {'Content-Type': 'text/html'});
