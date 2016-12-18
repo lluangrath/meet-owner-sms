@@ -28,8 +28,8 @@ httpServer.post('/service', function(req, res){
     });
     
     console.dir(req.body);
-    res.writeHead(200, {'Content-Type': 'application/json'});
-    res.end('{"response":"success"}');
+    res.writeHead(200, {'Content-Type': 'text/xml'});
+    res.end('<Response><Message>SMS received by Server</Message></Response>');
 });
 
 httpServer.listen(httpPort, function () {
