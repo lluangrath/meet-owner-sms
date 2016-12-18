@@ -24,11 +24,11 @@ httpServer.post('/service', function(req, res){
     var ws = new WebSocket(HOST);
     ws.on('open', function open() {
       console.log('connected');
-      ws.send(JSON.stringify(req));
+      ws.send(JSON.stringify(req.body));
     });
     
     console.dir(req.body);
-    res.writeHead(200, {'Content-Type': 'text/json'});
+    res.writeHead(200, {'Content-Type': 'application/json'});
     res.end('{"response":"success"}');
 });
 
