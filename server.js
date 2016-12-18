@@ -4,18 +4,19 @@ const express = require('express');
 const bodyParser = require('body-parser');
 
 var httpServer = express();
-var httpPort = 0;
 
 httpServer.use(bodyParser.json());
 httpServer.use(bodyParser.urlencoded({ extended: true }));
 
-httpServer.post('/', function(req, res){
-    console.log('POST /');
+httpServer.post('/service', function(req, res){
     console.dir(req.body);
-    res.writeHead(200, {'Content-Type': 'text/html'});
-    res.end('thanks');
+    res.writeHead(200, {'Content-Type': 'text/json'});
+    res.end('{"response":"success"}');
 });
 
-httpPort = 80;
 httpServer.listen(httpPort);
+httpServer.listen(process.env.PORT || 8080, function () {
+  var port = server.address().port;
+  console.log("App now running on port", port);
+});
 console.log('HTTP Listening at ' + httpPort)
