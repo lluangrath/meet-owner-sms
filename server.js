@@ -24,7 +24,7 @@ httpServer.post('/service', function(req, res){
     var ws = new WebSocket(HOST);
     ws.on('open', function open() {
       console.log('connected');
-      ws.send(JSON.stringify(req.body));
+      ws.send(JSON.stringify(req));
     });
     
     console.dir(req.body);
