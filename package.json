@@ -1,0 +1,21 @@
+{
+  "name": "http-vanilla",
+  "version": "1.0.0",
+  "engines": {
+    "node": "6.2.0"
+  },
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bufferutil": "1.2.1",
+    "express": "4.13.4",
+    "body-parser": "1.9.2",
+    "utf-8-validate": "1.2.1"
+  }
+}
