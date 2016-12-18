@@ -9,8 +9,9 @@
 
     <style>
       .msg-list ul { margin:0; padding:0; list-style:none; }
-      .msg-list li { padding:25px; }
+      .msg-list li { padding:25px; font-size:1.3vw; }
       .msg-list li p { background-color: lightgreen; margin: 0; padding: 0; font-family: "Courier New", Courier, monospace; }
+      .msg-list li pre { margin-top: 0; }
     </style>
   </head>
   <body>
@@ -28,7 +29,7 @@
       ws.onmessage = function (msg) {
         var json_obj = JSON.parse(msg.data);
         var beautified_json = js_beautify(msg.data);
-        $('.msg-list ul').append('<li><p>['+new Date()+'][FROM:'+json_obj.From+'][TO:'+json_obj.To+']: <strong>'+json_obj.Body+'</strong></p><pre><code class="json">'+beautified_json+'</pre></code></li>');
+        $('.msg-list ul').append('<li><p>['+new Date().toString().split('GMT')[0]+'][FROM:'+json_obj.From+'][TO:'+json_obj.To+']: <strong>'+json_obj.Body+'</strong></p><pre><code class="json">'+beautified_json+'</pre></code></li>');
         $('pre code').each(function(i, block) {
           hljs.highlightBlock(block);
         });
