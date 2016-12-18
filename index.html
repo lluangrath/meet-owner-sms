@@ -20,10 +20,11 @@
       var ws = new WebSocket(HOST);
 
       ws.onmessage = function (msg) {
-        $('.msg-list ul').append('<li><pre><code class="json">'+msg.data+'</pre></code></li>');
-        //$('pre code').each(function(i, block) {
-        //  hljs.highlightBlock(block);
-        //});
+        var beautified_json = js_beautify(msg.data);
+        $('.msg-list ul').append('<li><pre><code class="json">'+beautified_json+'</pre></code></li>');
+        $('pre code').each(function(i, block) {
+          hljs.highlightBlock(block);
+        });
       };
     </script>
   </body>
