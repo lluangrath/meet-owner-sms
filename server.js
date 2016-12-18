@@ -16,6 +16,6 @@ httpServer.post('/service', function(req, res){
 });
 
 httpServer.listen(httpPort, function () {
-  var port = server.address().port;
+  var port = httpServer.address().port;
   console.log("App now running on port", port);
 });
