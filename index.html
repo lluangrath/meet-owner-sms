@@ -1,13 +1,22 @@
 <html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  </head>
   <body>
-    <p id='server-time'></p>
+    <h1>SMS Messages</h1>
+    <p id="server-time"></p>
+    <div class="msg-list">
+      <ul>
+      </ul>
+    </div>
     <script>
       var HOST = 'wss://meet-owner-ws.herokuapp.com'
       var ws = new WebSocket(HOST);
-      var el = document.getElementById('server-time');
+      //var el = document.getElementById('server-time');
 
-      ws.onmessage = function (event) {
-        el.innerHTML = 'Server time: ' + event.data;
+      ws.onmessage = function (msg) {
+        //el.innerHTML = 'Server time: ' + event.data;
+        $('.msg-list ul').append('<li>'+msg.data+'</li>')
       };
     </script>
   </body>

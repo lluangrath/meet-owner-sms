@@ -18,6 +18,11 @@ httpServer.get('/', function(req, res){
 });
 
 httpServer.post('/service', function(req, res){
+
+    var HOST = 'wss://meet-owner-ws.herokuapp.com'
+    var ws = new WebSocket(HOST);
+    ws.send(req.body);
+
     console.dir(req.body);
     res.writeHead(200, {'Content-Type': 'text/json'});
     res.end('{"response":"success"}');
