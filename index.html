@@ -8,8 +8,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.6.4/beautify-html.js"></script>
 
     <style>
-      .msg-list { margin:0; padding:0; }
+      .msg-list { margin:0; padding:0; list-style:none; }
       .msg-list li{ padding:25px; }
+      .msg-list li p { background-color: lightgreen; margin: 0; padding: 0; font-family: "Courier New", Courier, monospace; }
     </style>
   </head>
   <body>
@@ -27,7 +28,7 @@
       ws.onmessage = function (msg) {
         var json_obj = JSON.parse(msg.data);
         var beautified_json = js_beautify(msg.data);
-        $('.msg-list ul').append('<li><p>['+new Date().toLocaleString()+'][FROM:'+json_obj.From+'][TO:'+json_obj.To+']: '+json_obj.Body+'</p><pre><code class="json">'+beautified_json+'</pre></code></li>');
+        $('.msg-list ul').append('<li><p>['+new Date()+'][FROM:'+json_obj.From+'][TO:'+json_obj.To+']: <strong>'+json_obj.Body+'</strong></p><pre><code class="json">'+beautified_json+'</pre></code></li>');
         $('pre code').each(function(i, block) {
           hljs.highlightBlock(block);
         });
