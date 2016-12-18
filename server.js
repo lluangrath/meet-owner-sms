@@ -35,7 +35,7 @@ httpServer.post('/service', function(req, res){
 
 httpServer.get('/sendOwnerEmail',function(req, res){
   postmark.send({
-    "From": "meet-owner-sms@mao.com",
+    "From": "larry.luangrath@clynch.com",
     "To": "larry.luangrath@clynch.com",
     "Subject": "Hello from Postmark",
     "TextBody": "Hello! A SMS Text has been sent",
