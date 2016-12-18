@@ -15,15 +15,15 @@
       </ul>
     </div>
     <script>
-      hljs.initHighlightingOnLoad();
+      //hljs.initHighlightingOnLoad();
       var HOST = 'wss://meet-owner-ws.herokuapp.com'
       var ws = new WebSocket(HOST);
 
       ws.onmessage = function (msg) {
         $('.msg-list ul').append('<li><pre><code class="json">'+msg.data+'</pre></code></li>');
-        $('pre code').each(function(i, block) {
-          hljs.highlightBlock(block);
-        });
+        //$('pre code').each(function(i, block) {
+        //  hljs.highlightBlock(block);
+        //});
       };
     </script>
   </body>
