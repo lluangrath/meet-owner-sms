@@ -6,6 +6,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.6.4/beautify.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.6.4/beautify-css.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.6.4/beautify-html.js"></script>
+
+    <style>
+      .msg-list { margin:0; padding:0; }
+      .msg-list li{ padding:25px; }
+    </style>
   </head>
   <body>
     <h1>SMS Messages</h1>
@@ -20,8 +25,9 @@
       var ws = new WebSocket(HOST);
 
       ws.onmessage = function (msg) {
+        var json_obj = JSON.parse(msg.data);
         var beautified_json = js_beautify(msg.data);
-        $('.msg-list ul').append('<li><pre><code class="json">'+beautified_json+'</pre></code></li>');
+        $('.msg-list ul').append('<li><p>['+new Date().toLocaleString()+'][FROM:'+json_obj.From+'][TO:'+json_obj.To+']: '+json_obj.Body+'</p><pre><code class="json">'+beautified_json+'</pre></code></li>');
         $('pre code').each(function(i, block) {
           hljs.highlightBlock(block);
         });
