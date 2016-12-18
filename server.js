@@ -33,19 +33,23 @@ httpServer.post('/service', function(req, res){
     res.end('<Response><Message>SMS received by Server</Message></Response>');
 });
 
-httpServer.post('sendOwnerEmail',function(req, res){
+httpServer.get('sendOwnerEmail',function(req, res){
   postmark.send({
-    "From": "leonard@bigbangtheory.com",
-    "To": "sheldon@bigbangtheory.com",
+    "From": "meet-owner-sms@mao.com",
+    "To": "larry.luangrath@clynch.com",
     "Subject": "Hello from Postmark",
-    "TextBody": "Hello!",
+    "TextBody": "Hello! A SMS Text has been sent",
     "Tag": "big-bang"
   }, function(error, success) {
       if(error) {
           console.error("Unable to send via postmark: " + error.message);
+          res.writeHead(500, {'Content-Type': 'text/xml'});
+          res.end('<Response><Message>Error Sending Email</Message></Response>');
         return;
       }
-      console.info("Sent to postmark for delivery")
+      console.info("Sent to postmark for delivery");
+      res.writeHead(200, {'Content-Type': 'text/xml'});
+      res.end('<Response><Message>Email sent</Message></Response>');
   });
 
 });
