@@ -56,7 +56,7 @@ httpServer.get('/sendProspectSMS/:id',function(req, res){
       res.end('<Response><Message>Error Sending SMS</Message></Response>');
     }
     else{
-      res.end('<Response><Message>SMS sent</Message></Response>');
+      res.end('<Response><Message>SMS sent to '+toNum+'</Message></Response>');
     }
       console.log(message.sid);
   });
