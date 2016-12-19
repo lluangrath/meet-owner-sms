@@ -64,7 +64,6 @@ function sendOwnerEmail(res,toEml,sbj,bdy,tag){
           console.error("Unable to send via postmark: " + error.message);
           res.writeHead(500, {'Content-Type': 'text/xml'});
           res.end('<Response><Message>Error Sending Email</Message></Response>');
-        return;
       }
       else {
         console.info("Sent to postmark for delivery");
@@ -75,5 +74,5 @@ function sendOwnerEmail(res,toEml,sbj,bdy,tag){
 }
 
 function sendProspectSMS(){
-  
+
 }
