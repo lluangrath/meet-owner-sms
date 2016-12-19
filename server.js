@@ -45,11 +45,12 @@ httpServer.listen(httpPort, function () {
 });
 
 function sendOwnerEmail(res,toEml,sbj,bdy,tag){
+    //NOTE: below was removed to use email template from PostMark
+    //"Subject": sbj,
+    //"HtmlBody": bdy,
   postmark.sendEmailWithTemplate({
     "From": "larry.luangrath@clynch.com",
     "To": toEml,
-    /*"Subject": sbj,
-    "HtmlBody": bdy,*/
     "ReplyTo":"reply@meetanowner.com",
     "Tag": tag,
     "TemplateId": 1163523,
