@@ -49,6 +49,13 @@ httpServer.get('/sendProspectSMS',function(req, res){
     from: "+18562813666", 
     body: "Sample text from Owner to Prospect", 
   }, function(err, message) { 
+    res.writeHead(err?500:200, {'Content-Type': 'text/xml'});
+    if(err){
+      res.end('<Response><Message>Error Sending SMS</Message></Response>');
+    }
+    else{
+      res.end('<Response><Message>SMS sent</Message></Response>');
+    }
       console.log(message.sid);
   });
 
