@@ -60,14 +60,14 @@ function sendOwnerEmail(res,toEml,sbj,bdy,tag){
       "prospective_msg": bdy
     }
   }, function(error, success) {
+      res.writeHead(error?500:200, {'Content-Type': 'text/xml'});
+
       if(error) {
           console.error("Unable to send via postmark: " + error.message);
-          res.writeHead(500, {'Content-Type': 'text/xml'});
           res.end('<Response><Message>Error Sending Email</Message></Response>');
       }
       else {
         console.info("Sent to postmark for delivery");
-        res.writeHead(200, {'Content-Type': 'text/xml'});
         res.end('<Response><Message>Email sent</Message></Response>');
       }
   });
