@@ -28,8 +28,8 @@ httpServer.post('/service', function(req, res){
       ws.send(JSON.stringify(req.body));
     });
 
-    var emlBdy = 'Hello, a prospective owner wants to ask you a question. Please see below:<br/>"'+req.body.Body+'"<br/><br/>Please reply within 1-3 days. Thanks!';
-    sendOwnerEmail(res,"larry.luangrath@clynch.com","[Subaru] Meet an Owner",emlBdy,"Prospective Owner");
+    var emlBdy = 'Hello, a prospective owner wants to ask you a question. Please see below:<br/><br/>"'+req.body.Body+'"<br/><br/>Please reply within 1-3 days. Thanks!';
+    sendOwnerEmail(res,"larry.luangrath@clynch.com","[Subaru] Meet an Owner",req.body.Body,"Prospective Owner");
     
     console.dir(req.body);
     res.writeHead(200, {'Content-Type': 'text/xml'});
@@ -45,13 +45,19 @@ httpServer.listen(httpPort, function () {
 });
 
 function sendOwnerEmail(res,toEml,sbj,bdy,tag){
-  postmark.send({
+  postmark.sendEmailWithTemplate({
     "From": "larry.luangrath@clynch.com",
     "To": toEml,
     "Subject": sbj,
     "HtmlBody": bdy,
     "ReplyTo":"reply@meetanowner.com",
-    "Tag": tag
+    "Tag": tag,
+    "TemplateId": 1163523,
+    "TemplateModel": {
+      "owner_name": "Subaru owner",
+      "action_url": "http://www.subaru.com",
+      "prospective_msg": bdy
+    }
   }, function(error, success) {
       if(error) {
           console.error("Unable to send via postmark: " + error.message);
