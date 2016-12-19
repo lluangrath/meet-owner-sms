@@ -29,7 +29,7 @@ httpServer.post('/service', function(req, res){
     });
 
     var emlBdy = 'Hello, a prospective owner wants to ask you a question. Please see below:<br/>"'+req.body.Body+'"<br/><br/>Please reply within 1-3 days. Thanks!';
-    sendOwnerEmail(res,"larry.luangrath@clynch.com","[Subaru]Meet an Owner",,"Prospective Owner");
+    sendOwnerEmail(res,"larry.luangrath@clynch.com","[Subaru]Meet an Owner",emlBdy,"Prospective Owner");
     
     console.dir(req.body);
     res.writeHead(200, {'Content-Type': 'text/xml'});
