@@ -48,8 +48,8 @@ function sendOwnerEmail(res,toEml,sbj,bdy,tag){
   postmark.sendEmailWithTemplate({
     "From": "larry.luangrath@clynch.com",
     "To": toEml,
-    "Subject": sbj,
-    "HtmlBody": bdy,
+    /*"Subject": sbj,
+    "HtmlBody": bdy,*/
     "ReplyTo":"reply@meetanowner.com",
     "Tag": tag,
     "TemplateId": 1163523,
