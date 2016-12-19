@@ -13,7 +13,7 @@ httpServer.use(bodyParser.json());
 httpServer.use(bodyParser.urlencoded({ extended: true }));
 
 httpServer.get('/', function(req, res){
-    console.log('GET /')
+    console.log('GET /');
     var html = fs.readFileSync('index.html');
     res.writeHead(200, {'Content-Type': 'text/html'});
     res.end(html);
@@ -21,7 +21,7 @@ httpServer.get('/', function(req, res){
 
 httpServer.post('/service', function(req, res){
 
-    var HOST = 'wss://meet-owner-ws.herokuapp.com'
+    var HOST = 'wss://meet-owner-ws.herokuapp.com';
     var ws = new WebSocket(HOST);
     ws.on('open', function open() {
       console.log('connected');
