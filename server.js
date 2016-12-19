@@ -42,7 +42,7 @@ httpServer.get('/sendProspectSMS/:id',function(req, res){
   // Twilio Credentials 
   var accountSid = 'AC3cb3ccdb354b7b8e07ed936de030dc1f'; 
   var authToken = 'c986c0fcfdee0cd876d520d7f46b9728';
-  var toNum = "+"+req.params.id?"16128896997":req.params.id;
+  var toNum = "+"+req.params.id?req.params.id:"16128896997";
   console.log(req.params.id);
 
   var twilio = require('twilio')(accountSid, authToken);
