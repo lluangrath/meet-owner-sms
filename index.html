@@ -35,13 +35,13 @@
         $('.info-toggle').on('click',function(){
           var dtls = $(this).parent().siblings('pre');
 
-          if(dtls.is(':visible')){
-            dtls.slideUp();
-            $(this).text('more');
-          }
-          else{
+          if(!dtls.is(':visible')){
             dtls.slideDown();
             $(this).text('less');
+          }
+          else{
+            dtls.slideUp();
+            $(this).text('more');
           }
         });
 
