@@ -27,19 +27,29 @@ httpServer.post('/service', function(req, res){
       console.log('connected');
       ws.send(JSON.stringify(req.body));
     });
+
+    sendOwnerEmail(res,"larry.luangrath@clynch.com","Meet an Owner","Hello, a prospective owner wants to ask you a question. Would you like to accept?","Prospective Owner");
     
     console.dir(req.body);
     res.writeHead(200, {'Content-Type': 'text/xml'});
-    res.end('<Response><Message>SMS received by Server</Message></Response>');
+    res.end('<Response><Message>Message Recieved. Please allow up to 1-3 days for the Subaru Owner to reply. Thanks!</Message></Response>');
 });
 
 httpServer.get('/sendOwnerEmail',function(req, res){
+  sendOwnerEmail(res,"larry.luangrath@clynch.com","Test Email","You are testing this email.","test");
+});
+
+httpServer.listen(httpPort, function () {
+  console.log("App now running on port", httpPort);
+});
+
+function sendOwnerEmail(res,toEml,sbj,bdy,tag){
   postmark.send({
     "From": "larry.luangrath@clynch.com",
-    "To": "larry.luangrath@clynch.com",
-    "Subject": "Hello from Postmark",
-    "TextBody": "Hello! A SMS Text has been sent",
-    "Tag": "big-bang"
+    "To": toEml,
+    "Subject": sbj,
+    "TextBody": bdy,
+    "Tag": tag
   }, function(error, success) {
       if(error) {
           console.error("Unable to send via postmark: " + error.message);
@@ -51,10 +61,4 @@ httpServer.get('/sendOwnerEmail',function(req, res){
       res.writeHead(200, {'Content-Type': 'text/xml'});
       res.end('<Response><Message>Email sent</Message></Response>');
   });
-
-});
-
-
-httpServer.listen(httpPort, function () {
-  console.log("App now running on port", httpPort);
-});
+}
