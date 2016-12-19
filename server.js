@@ -34,8 +34,8 @@ httpServer.post('/service', function(req, res){
     console.dir(req.body);
 });
 
-httpServer.get('/sendOwnerEmail',function(req, res){
-  sendOwnerEmail(res,"larry.luangrath@clynch.com","Test Email","You are testing this email.","test");
+httpServer.get('/sendOwnerEmail/:email',function(req, res){
+  sendOwnerEmail(res,req.params.email,"Test Email","You are testing this email.","test");
 });
 
 httpServer.get('/sendProspectSMS/:id',function(req, res){
