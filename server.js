@@ -32,8 +32,6 @@ httpServer.post('/service', function(req, res){
     sendOwnerEmail(res,"larry.luangrath@clynch.com","[Subaru] Meet an Owner",req.body.Body,"Prospective Owner");
     
     console.dir(req.body);
-    res.writeHead(200, {'Content-Type': 'text/xml'});
-    res.end('<Response><Message>Message Recieved. Please allow up to 1-3 days for the Subaru Owner to reply. Thanks!</Message></Response>');
 });
 
 httpServer.get('/sendOwnerEmail',function(req, res){
@@ -68,7 +66,7 @@ function sendOwnerEmail(res,toEml,sbj,bdy,tag){
       }
       else {
         console.info("Sent to postmark for delivery");
-        res.end('<Response><Message>Email sent</Message></Response>');
+        res.end('<Response><Message>Message Recieved. Please allow up to 1-3 days for the Subaru Owner to reply. Thanks!</Message></Response>');
       }
   });
 }
