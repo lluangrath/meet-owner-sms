@@ -47,7 +47,7 @@ httpServer.get('/sendProspectSMS',function(req, res){
   twilio.messages.create({ 
     to: "+16128896997", 
     from: "+18562813666", 
-    body: "Sample text from Owner to Prospect", 
+    body: "Sample text from Owner (via Twilio Service) to Prospect", 
   }, function(err, message) { 
     res.writeHead(err?500:200, {'Content-Type': 'text/xml'});
     if(err){
