@@ -31,23 +31,25 @@
 
         $('.msg-list ul').append('<li><p>['+new Date().toString().split(' GMT')[0]+']<br/>[FROM:'+json_obj.From+']<br/>[TO:'+json_obj.To+']<br/><strong>'+json_obj.Body+'</strong><br/><a href="javascript:void(0);" class="info-toggle">more</a></p><pre style="display:none"><code class="json">'+beautified_json+'</pre></code></li>');
 
+
+        $('.info-toggle').on('click',function(){
+          var dtls = $(this).parent().siblings('pre');
+
+          if(dtls.is(':visible')){
+            dtls.slideUp();
+            $(this).text('more');
+          }
+          else{
+            dtls.slideDown();
+            $(this).text('less');
+          }
+        });
+
         $('pre code').each(function(i, block) {
           hljs.highlightBlock(block);
         });
       };
 
-      $('.info-toggle').on('click',function(){
-        var dtls = $(this).parent().siblings('pre');
-
-        if(dtls.is(':visible')){
-          dtls.slideUp();
-          $(this).text('more');
-        }
-        else{
-          dtls.slideDown();
-          $(this).text('less');
-        }
-      });
     </script>
   </body>
 </html>
