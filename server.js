@@ -73,3 +73,7 @@ function sendOwnerEmail(res,toEml,sbj,bdy,tag){
       }
   });
 }
+
+function sendProspectSMS(){
+  
+}
