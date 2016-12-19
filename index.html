@@ -39,7 +39,7 @@
             dtls.slideDown();
             $(this).text('less');
           }
-          else if (!dtls.is(':visible')){
+          else if(dtls.is(':visible')){
             dtls.slideUp();
             $(this).text('more');
           }
