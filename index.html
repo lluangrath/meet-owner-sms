@@ -33,7 +33,7 @@
 
 
         $('.info-toggle').on('click',function(){
-          var dtls = $(this).parent().siblings('pre');
+          var dtls = $(this).parent().next();
 
           if(!dtls.is(':visible')){
             dtls.slideDown();
