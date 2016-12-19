@@ -38,14 +38,15 @@ httpServer.get('/sendOwnerEmail',function(req, res){
   sendOwnerEmail(res,"larry.luangrath@clynch.com","Test Email","You are testing this email.","test");
 });
 
-httpServer.get('/sendProspectSMS',function(req, res){
+httpServer.get('/sendProspectSMS/:id',function(req, res){
   // Twilio Credentials 
   var accountSid = 'AC3cb3ccdb354b7b8e07ed936de030dc1f'; 
   var authToken = 'c986c0fcfdee0cd876d520d7f46b9728';
+  var toNum = "+"+req.params.id?"16128896997":req.params.id;
 
   var twilio = require('twilio')(accountSid, authToken);
   twilio.messages.create({ 
-    to: "+16128896997", 
+    to: toNum, 
     from: "+18562813666", 
     body: "Sample text from Owner (via Twilio Service) to Prospect", 
   }, function(err, message) { 
