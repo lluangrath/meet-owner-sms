@@ -43,13 +43,13 @@ httpServer.get('/sendProspectSMS',function(req, res){
   var accountSid = 'AC3cb3ccdb354b7b8e07ed936de030dc1f'; 
   var authToken = 'c986c0fcfdee0cd876d520d7f46b9728';
 
-  const twilio = require('twilio')(accountSid, authToken);
-  client.messages.create({ 
+  var twilio = require('twilio')(accountSid, authToken);
+  twilio.messages.create({ 
     to: "+16128896997", 
     from: "+18562813666", 
     body: "Sample text from Owner to Prospect", 
   }, function(err, message) { 
-      console.log(message.sid); 
+      console.log(message.sid);
   });
 
 });
