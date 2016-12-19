@@ -31,7 +31,7 @@
 
         $('.msg-list ul').append('<li><p>['+new Date().toString().split(' GMT')[0]+']<br/>[FROM:'+json_obj.From+']<br/>[TO:'+json_obj.To+']<br/><strong>'+json_obj.Body+'</strong><br/><a href="javascript:void(0);" class="info-toggle">more</a></p><pre><code class="json">'+beautified_json+'</pre></code></li>');
 
-
+        $('.info-toggle').off();
         $('.info-toggle').on('click',function(){
           var dtls = $(this).parent().next();
 
