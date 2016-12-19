@@ -66,8 +66,10 @@ function sendOwnerEmail(res,toEml,sbj,bdy,tag){
           res.end('<Response><Message>Error Sending Email</Message></Response>');
         return;
       }
-      console.info("Sent to postmark for delivery");
-      res.writeHead(200, {'Content-Type': 'text/xml'});
-      res.end('<Response><Message>Email sent</Message></Response>');
+      else {
+        console.info("Sent to postmark for delivery");
+        res.writeHead(200, {'Content-Type': 'text/xml'});
+        res.end('<Response><Message>Email sent</Message></Response>');
+      }
   });
 }
